@@ -16,7 +16,7 @@
   <groupId>com.ibm.websphere.samples.daytrader</groupId>
   <artifactId>dt-ejb</artifactId>
   <packaging>ejb</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>BUILD-${BUILD_NUMBER}</version>
 
   <name>dt-ejb</name>
   <url>http://maven.apache.org</url>
