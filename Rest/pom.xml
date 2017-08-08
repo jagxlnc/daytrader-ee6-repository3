@@ -16,7 +16,7 @@
   <groupId>com.ibm.websphere.samples.daytrader</groupId>
   <artifactId>Rest</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>BUILD-${BUILD_NUMBER}</version>
 
   <name>Rest</name>
   <url>http://maven.apache.org</url>
