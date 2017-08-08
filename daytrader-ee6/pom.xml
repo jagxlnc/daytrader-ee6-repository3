@@ -7,7 +7,7 @@
 	<groupId>com.ibm.websphere.samples.daytrader</groupId>
 	<artifactId>daytrader-ee6</artifactId>
 	<packaging>ear</packaging>
-	<version>BUILD-${BUILD_NUMBER}</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
 
@@ -24,19 +24,19 @@
 		<dependency>
 			<groupId>com.ibm.websphere.samples.daytrader</groupId>
 			<artifactId>Rest</artifactId>
-			<version>BUILD-${BUILD_NUMBER}</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.websphere.samples.daytrader</groupId>
 			<artifactId>dt-ejb</artifactId>
-			<version>BUILD-${BUILD_NUMBER}</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 		<dependency>
 			<groupId>com.ibm.websphere.samples.daytrader</groupId>
 			<artifactId>web</artifactId>
-			<version>BUILD-${BUILD_NUMBER}</version>
+			<version>0.0.1-SNAPSHOT</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
