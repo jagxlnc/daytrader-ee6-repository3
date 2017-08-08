@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                sh '''
+                   cd dt-ejb
+                   mvn clean test
+                   cd ../Rest
+                   mvn clean test
+                   cd ../web
+                   mvn clean test
+                   '''
+             }
+        }
+    }
+}
