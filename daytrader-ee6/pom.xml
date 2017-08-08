@@ -11,9 +11,6 @@
 
 	<properties>
 
-<!--     <docker.registry>http://registry.docker.hub.com/</docker.registry> 
-     <push.image>true</push.image>                                      
--->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -82,14 +79,12 @@
 
 	<build>
 		<plugins>
-		
 			<plugin>
 				<artifactId>maven-ear-plugin</artifactId>
 				<version>2.10</version>
 				<configuration>
 					<version>6</version>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
-
 					<modules>
 						<ejbModule>
 							<groupId>com.ibm.websphere.samples.daytrader</groupId>
@@ -113,7 +108,6 @@
 							<bundleFileName>Rest.war</bundleFileName>
 							<!-- More configuration can be set here -->
 						</webModule>
-
 						<jarModule>
 							<groupId>commons-logging</groupId>
 							<artifactId>commons-logging</artifactId>
@@ -165,10 +159,6 @@
 						</goals>
 						<configuration>
 							<systemPropertyVariables>
-<!-- uncomment for onpremise integragtion test
-								<daytrader.app.route>http://localhost:9080</daytrader.app.route>
--->
-<!--  uncomment for container integration test -->
 								<daytrader.app.route>http://localhost:9080</daytrader.app.route>
 							</systemPropertyVariables>
 							<testSourceDirectory>src/test/java</testSourceDirectory>
@@ -227,39 +217,6 @@
 							</resources>
 						</configuration>
 					</execution>
-					<!-- uncomment for docker -->
-					<execution> 
-						<id>copy-dockerfile</id> 
-						<phase>package</phase> 
-						<goals> 
-							<goal>copy-resources</goal> 
-						</goals> 
-						<configuration> 
-							<outputDirectory>${project.build.directory}</outputDirectory> 
-							<resources> 
-								<resource> 
-									<directory>${project.basedir}/src/main/resources/docker</directory> 
-									<includes> 
-										<include>Dockerfile</include> 
-									</includes> 
-								</resource> 
-							</resources> 
-						</configuration> 
-					</execution> 
-					<!--<execution>
-                                                <id>copy-repo</id>
-                                                <phase>package</phase>
-                                                <goals> <goal>copy-resources</goal> </goals>
-                                                <configuration>
-                                                        <outputDirectory>${project.build.directory}</outputDirectory>
-                                                        <resources>
-                                                                <resource>
-                                                                       <directory>${project.basedir}/src/main/resources/docker</directory>
-                                                                       <includes> <include>repositories.properties</include> </includes>
-                                                                </resource>
-                                                        </resources>
-                                                </configuration>
-                                        </execution> -->
 				</executions>
 			</plugin>
 
@@ -293,7 +250,7 @@
 							<goal>package-server</goal>
 						</goals>
 					</execution>
-<!-- 					<execution>
+ 					<execution>
 						<id>install-feature</id>
 						<phase>prepare-package</phase>
 						<goals>
@@ -313,8 +270,7 @@
 							</features>
 						</configuration>
 					</execution>
-					-->
-<!-- 					<execution>
+					<execution>
 						<id>start-server</id>
 						<phase>pre-integration-test</phase>
 						<goals>
@@ -328,82 +284,10 @@
 							<goal>stop-server</goal>
 						</goals>
 					</execution>
--->					
 				</executions>
 			</plugin>
-
-
-			<plugin> 
-				<groupId>com.spotify</groupId> 
-				<artifactId>docker-maven-plugin</artifactId> 
-				<version>0.2.3</version> 
-				<executions> 
-					<execution> 
-						<phase>package</phase> 
-						<goals> 
-							<goal>build</goal> 
-						</goals> 
-					</execution> 
-				</executions> 
-				<configuration> 
-					<dockerDirectory>${project.build.directory}</dockerDirectory> 
-					<imageName>dhvines/${project.artifactId}:${project.version}</imageName> 
-				</configuration> 
-			</plugin>
-
-<plugin>
-    <groupId>io.fabric8</groupId>
-    <artifactId>docker-maven-plugin</artifactId>
-    <version>0.20.1</version>
-    <executions>
-        <execution>
-            <id>start</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-                <goal>start</goal>
-            </goals>
-            <configuration>
-                <images>
-                    <image>
-                        <name>dhvines/${project.artifactId}:${project.version}</name>
-                        <alias>${project.artifactId}</alias>
-                        <run>
-                            <ports>
-                                <port>9080:9080</port>
-                                <port>9443:9443</port>
-                            </ports>
-                            <wait>
-                                <log>(?s)The server defaultServer is ready to run a smarter planet.</log>
-                                <time>600000</time>
-                            </wait>
-                        </run>
-                    </image>
-                </images>
-            </configuration>
-        </execution>
-        <execution>
-            <id>stop</id>
-            <phase>post-integration-test</phase>
-            <goals>
-                <goal>stop</goal>
-            </goals>
-        </execution>
-
-        <execution>
-            <id>remove</id>
-            <phase>post-integration-test</phase>
-            <goals>
-                <goal>remove</goal>
-            </goals>
-        </execution>
-        
-    </executions>
-
-            </plugin>
-
 		</plugins>
 	</build>
-
 </project>
 
 
