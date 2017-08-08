@@ -16,7 +16,7 @@ pipeline {
                    '''
              }
         }
-        stage('Continuos Delivery') {
+        stage('Continuous Delivery') {
             steps {
                 sh '''
                     #!/bin/bash
@@ -27,8 +27,10 @@ pipeline {
                     echo "Deploying...."
                     export CF_APP_NAME="dm-daytrader-ee6"
                     if cf app $CF_APP_NAME; then
+                    echo "Application already exists, pushing new version..."
                     cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
                     else
+                    echo "New Application, push and restage required..."
                     cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
                     cf restage $CF_APP_NAME
                     fi
