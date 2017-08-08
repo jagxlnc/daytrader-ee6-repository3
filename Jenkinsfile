@@ -16,15 +16,16 @@ pipeline {
                    '''
              }
         }
-        stage ('Manual Promotion')
+        stage ('Manual Promotion') {
             // we need a first milestone step so that all jobs entering this stage are tracked an can be aborted if needed
             milestone 1
             // time out manual approval after ten minutes
             timeout(time: 10, unit: 'MINUTES') {
-            input message: "Does Pre-Production look good?"
+                input message: "Does Pre-Production look good?"
             }
             // this will kill any job which is still in the input step
-        milestone 2
+            milestone 2
+        }
         stage('ICp-deploy') {
             steps {
                 sh '''
