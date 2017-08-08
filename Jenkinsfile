@@ -11,15 +11,19 @@ pipeline {
         stage('Continuous Integration') {
             steps {
                 sh '''
-                   #cd dt-ejb
-                   #mvn clean install
-                   #cd ../Rest
-                   #mvn clean install
-                   #cd ../web
-                   #mvn clean install
-                   #cd ../daytrader-ee6
-                   #mvn clean verify
-                   #cd ..
+                   # build dt-ejb project
+                   cd dt-ejb
+                   mvn clean install
+                   # build Rest project
+                   cd ../Rest
+                   mvn clean install
+                   # build web project
+                   cd ../web
+                   mvn clean install
+                   # build EAR, create Liberty server, run tests
+                   cd ../daytrader-ee6
+                   mvn clean verify
+                   cd ..
                    '''
              }
         }
@@ -33,12 +37,12 @@ pipeline {
                     cf login -u $CF_USER -p $CF_PWD -o $CF_ORG -s $CF_SPACE
                     echo "Deploying...."
                     if cf app $CF_APP_NAME; then
-                    echo "Application already exists, pushing new version..."
-                    cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
+                        echo "Application already exists, pushing new version..."
+                        cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
                     else
-                    echo "New Application, push and restage required..."
-                    cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
-                    cf restage $CF_APP_NAME
+                        echo "New Application, push and restage required..."
+                        cf push $CF_APP_NAME -n $CF_APP_NAME -p wlp/usr/servers/Daytrader3Sample
+                        cf restage $CF_APP_NAME
                     fi
                 '''
             }
