@@ -5,7 +5,7 @@ pipeline {
         string(name: 'CF_PWD', defaultValue: 'FWFbN9@S')
         string(name: 'CF_ORG', defaultValue: 'bluemix.workshop.user2@gmail.com')
         string(name: 'CF_SPACE', defaultValue: 'dev')
-        string(name: 'CF_APP_NAME', defaultValue: 'FWFbN9@S')
+        string(name: 'CF_APP_NAME', defaultValue: 'dm-daytrader-ee6')
     }
     stages {
         stage('Continuous Integration') {
