@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Continuous Integration') {
             steps {
                 sh '''
                    cd dt-ejb
@@ -16,19 +16,7 @@ pipeline {
                    '''
              }
         }
-        stage ('Manual Promotion') {
-            steps {
-                // we need a first milestone step so that all jobs entering this stage are tracked an can be aborted if needed
-                milestone 1
-                // time out manual approval after ten minutes
-                timeout(time: 10, unit: 'MINUTES') {
-                    input message: "Deploy to Bluemix?"
-                }
-                // this will kill any job which is still in the input step
-                milestone 2
-            }
-        }
-        stage('CF-deploy') {
+        stage('Continuos Delivery') {
             steps {
                 sh '''
                     pwd
