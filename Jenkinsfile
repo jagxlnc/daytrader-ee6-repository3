@@ -19,6 +19,10 @@ pipeline {
         stage('ICp-deploy') {
             steps {
                 sh '''
+                    pwd
+                    cd daytrader-ee6/target
+                    pwd
+                    ls -la
                     echo "CF Login..."
                     cf api https://api.ng.bluemix.net
                     cf login -u bluemix.workshop.user2@gmail.com -p FWFbN9@S -o bluemix.workshop.user2@gmail.com -s dev
