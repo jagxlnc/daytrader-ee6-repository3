@@ -22,7 +22,7 @@ pipeline {
                    mvn clean install
                    # build EAR, create Liberty server, run tests
                    cd ../daytrader-ee6
-                   mvn clean verify
+                   mvn clean verify -Pnative
                    cd ..
                    '''
              }
