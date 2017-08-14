@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'CF_USER', defaultValue: 'bluemix.workshop.user10@gmail.com')
         string(name: 'CF_PWD', defaultValue: 'FWFbN9@S')
-        string(name: 'CF_ORG', defaultValue: 'bluemix.workshop.user10@gmail.com)
+        string(name: 'CF_ORG', defaultValue: 'bluemix.workshop.user10@gmail.com')
         string(name: 'CF_SPACE', defaultValue: 'dev')
         string(name: 'CF_APP_NAME', defaultValue: 'daytrader-jag')
     }
