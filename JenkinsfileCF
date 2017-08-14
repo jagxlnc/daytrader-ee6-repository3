@@ -8,7 +8,7 @@ pipeline {
         string(name: 'CF_APP_NAME', defaultValue: '<your app name>')
     }
     stages {
-        stage('Continuous Integration') {\
+        stage('Continuous Integration') {
             steps {
                 sh '''
                    # build dt-ejb project
