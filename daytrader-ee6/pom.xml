@@ -307,7 +307,7 @@
 					                                </ports>
 					                                <wait>
 					                                    <log>(?s)The server defaultServer is ready to run a smarter planet.</log>
-					                                    <time>600000</time>
+					                                    <time>3000000</time>
 					                                </wait>
 					                            </run>
 					                        </image>
