@@ -15,9 +15,9 @@ pipeline {
                    #mvn clean install
                    #cd ../web
                    #mvn clean install
-                   cd daytrader-ee6
-                   mvn clean verify -Pdocker
-                   cd ..
+                   #cd daytrader-ee6
+                   #mvn clean verify -Pdocker
+                   #cd ..
                    '''
              }
         }
